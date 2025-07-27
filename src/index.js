@@ -1,17 +1,17 @@
+// src/index.js (or src/main.jsx)
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+ // Import BrowserRouter
+import { AuthProvider } from './context/AuthContext'; // Your AuthProvider
+import App from './App'; // Your main application component
+import './index.css'; // Your Tailwind CSS import
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    {/* <--- THIS IS THE KEY: BrowserRouter wraps AuthProvider */}
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

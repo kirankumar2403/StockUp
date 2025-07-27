@@ -1,13 +1,25 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.animation-delay-2000 {
+  animation-delay: 2s;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.stocksense-logo-flash {
+  animation: logo-pulse-gradient 3s ease-in-out infinite; /* 3 seconds duration, infinite loop */
+  /* Ensure the gradient text properties are compatible */
+  background-size: 200% 200%; /* Needed for background-position animation */
+  transition: all 0.3s ease-in-out; /* Keep existing transitions for sidebar collapse */
+}
+.animate-scroll-logos {
+  animation: scroll-logos 30s linear infinite;
 }
