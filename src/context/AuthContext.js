@@ -9,7 +9,7 @@ export function useAuth() {
 
 // Define your backend base URL
 // Make sure this matches the PORT your backend server is actually running on
-const BACKEND_BASE_URL = 'http://localhost:5000';
+const BACKEND_BASE_URL = 'https://stockup-l530.onrender.com';
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);

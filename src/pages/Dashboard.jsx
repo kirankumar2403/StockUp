@@ -26,7 +26,7 @@ import * as XLSX from 'xlsx';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
-const socket = io('http://localhost:5000');
+const socket = io('https://stockup-l530.onrender.com');
 
 // --- SUB-COMPONENTS (Defined within this file) ---
 
@@ -93,8 +93,8 @@ const ProductForm = ({ productToEdit, onClose, onProductSaved }) => {
             try {
                 const token = localStorage.getItem('token');
                 const [catRes, brandRes] = await Promise.all([
-                    fetch('http://localhost:5000/api/categories', { headers: { Authorization: `Bearer ${token}` } }),
-                    fetch('http://localhost:5000/api/brands', { headers: { Authorization: `Bearer ${token}` } }),
+                    fetch('https://stockup-l530.onrender.com/api/categories', { headers: { Authorization: `Bearer ${token}` } }),
+                    fetch('https://stockup-l530.onrender.com/api/brands', { headers: { Authorization: `Bearer ${token}` } }),
                 ]);
 
                 const catData = await catRes.json();
@@ -181,7 +181,7 @@ const ProductForm = ({ productToEdit, onClose, onProductSaved }) => {
 
         setLoading(true);
         const method = productToEdit ? 'PUT' : 'POST';
-        const url = productToEdit ? `http://localhost:5000/api/products/${productToEdit._id}` : 'http://localhost:5000/api/products';
+        const url = productToEdit ? `https://stockup-l530.onrender.com/api/products/${productToEdit._id}` : 'https://stockup-l530.onrender.com/api/products';
         const token = localStorage.getItem('token');
 
         const payload = {
@@ -464,7 +464,7 @@ function CategoryForm({ categoryToEdit, onClose, onCategorySaved }) {
 
         setLoading(true);
         const method = categoryToEdit ? 'PUT' : 'POST';
-        const url = categoryToEdit ? `http://localhost:5000/api/categories/${categoryToEdit._id}` : 'http://localhost:5000/api/categories';
+        const url = categoryToEdit ? `https://stockup-l530.onrender.com/api/categories/${categoryToEdit._id}` : 'https://stockup-l530.onrender.com/api/categories';
         const token = localStorage.getItem('token');
 
         try {
@@ -616,7 +616,7 @@ function BrandForm({ brandToEdit, onClose, onBrandSaved }) {
 
         setLoading(true);
         const method = brandToEdit ? 'PUT' : 'POST';
-        const url = brandToEdit ? `http://localhost:5000/api/brands/${brandToEdit._id}` : 'http://localhost:5000/api/brands';
+        const url = brandToEdit ? `https://stockup-l530.onrender.com/api/brands/${brandToEdit._id}` : 'https://stockup-l530.onrender.com/api/brands';
         const token = localStorage.getItem('token');
 
         try {
@@ -745,7 +745,7 @@ function ProductDashboardContent({ userRole }) {
     const fetchCategories = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/categories', {
+            const res = await fetch('https://stockup-l530.onrender.com/api/categories', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -765,7 +765,7 @@ function ProductDashboardContent({ userRole }) {
     const fetchBrands = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/brands', {
+            const res = await fetch('https://stockup-l530.onrender.com/api/brands', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -792,7 +792,7 @@ function ProductDashboardContent({ userRole }) {
             if (searchTerm) queryParams.append('search', searchTerm);
 
 
-            const res = await fetch(`http://localhost:5000/api/products?${queryParams.toString()}`, {
+            const res = await fetch(`https://stockup-l530.onrender.com/api/products?${queryParams.toString()}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -829,7 +829,7 @@ function ProductDashboardContent({ userRole }) {
         setLoadingProducts(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/products/${productId}`, {
+            const res = await fetch(`https://stockup-l530.onrender.com/api/products/${productId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -1076,7 +1076,7 @@ function CategoryContent({ userRole }) {
         setCategoryError('');
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/categories', {
+            const res = await fetch('https://stockup-l530.onrender.com/api/categories', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -1112,7 +1112,7 @@ function CategoryContent({ userRole }) {
         setLoadingCategories(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/categories/${categoryId}`, {
+            const res = await fetch(`https://stockup-l530.onrender.com/api/categories/${categoryId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -1251,7 +1251,7 @@ function BrandContent({ userRole }) {
         setBrandError('');
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/brands', {
+            const res = await fetch('https://stockup-l530.onrender.com/api/brands', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -1287,7 +1287,7 @@ function BrandContent({ userRole }) {
         setLoadingBrands(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/brands/${brandId}`, {
+            const res = await fetch(`https://stockup-l530.onrender.com/api/brands/${brandId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -1431,7 +1431,7 @@ function AlertsContent({ userRole }) {
                 setLoadingAlerts(false);
                 return;
             }
-            const res = await fetch('http://localhost:5000/api/alerts', {
+            const res = await fetch('https://stockup-l530.onrender.com/api/alerts', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const data = await res.json();
@@ -1495,7 +1495,7 @@ function AlertsContent({ userRole }) {
         setAlertsError('');
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/alerts/${id}/resolve`, {
+            const res = await fetch(`https://stockup-l530.onrender.com/api/alerts/${id}/resolve`, {
                 method: 'PUT',
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -1522,7 +1522,7 @@ function AlertsContent({ userRole }) {
         setAlertsError('');
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/alerts/${id}/generate-po`, {
+            const res = await fetch(`https://stockup-l530.onrender.com/api/alerts/${id}/generate-po`, {
                 method: 'PUT',
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -1632,9 +1632,9 @@ function ReportsContent() {
                 }
 
                 const [summaryRes, trendsRes, topSellingRes] = await Promise.all([
-                    fetch('http://localhost:5000/api/products/summary', { headers: { Authorization: `Bearer ${token}` } }),
-                    fetch('http://localhost:5000/api/products/stock-trends', { headers: { Authorization: `Bearer ${token}` } }),
-                    fetch('http://localhost:5000/api/products/top-selling', { headers: { Authorization: `Bearer ${token}` } }),
+                    fetch('https://stockup-l530.onrender.com/api/products/summary', { headers: { Authorization: `Bearer ${token}` } }),
+                    fetch('https://stockup-l530.onrender.com/api/products/stock-trends', { headers: { Authorization: `Bearer ${token}` } }),
+                    fetch('https://stockup-l530.onrender.com/api/products/top-selling', { headers: { Authorization: `Bearer ${token}` } }),
                 ]);
 
                 const summaryData = await summaryRes.json();
@@ -1801,7 +1801,7 @@ function MovementLogsContent({ userRole }) { // <--- MODIFIED: Added userRole pr
                 if (startDate) queryParams.append('startDate', startDate.toISOString());
                 if (endDate) queryParams.append('endDate', endDate.toISOString());
 
-                const url = `http://localhost:5000/api/logs?${queryParams.toString()}`;
+                const url = `https://stockup-l530.onrender.com/api/logs?${queryParams.toString()}`;
 
                 const res = await fetch(url, {
                     headers: {
@@ -2078,7 +2078,7 @@ const UserForm = ({ userToEdit, onClose, onUserSaved }) => {
 
         setLoading(true);
         const method = userToEdit ? 'PUT' : 'POST';
-        const url = userToEdit ? `http://localhost:5000/api/users/${userToEdit._id}` : 'http://localhost:5000/api/users';
+        const url = userToEdit ? `https://stockup-l530.onrender.com/api/users/${userToEdit._id}` : 'https://stockup-l530.onrender.com/api/users';
         const token = localStorage.getItem('token');
 
         const payload = {
@@ -2240,7 +2240,7 @@ const UserManagementContent = ({ userRole }) => {
         setUserError('');
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/users', {
+            const res = await fetch('https://stockup-l530.onrender.com/api/users', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -2286,7 +2286,7 @@ const UserManagementContent = ({ userRole }) => {
         setLoadingUsers(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/users/${userId}`, {
+            const res = await fetch(`https://stockup-l530.onrender.com/api/users/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
