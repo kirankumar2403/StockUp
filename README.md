@@ -1,6 +1,6 @@
-# 📦 StockSense: Inventory Management System
+# 📦 StockUp: Inventory Management System
 
-StockSense is a comprehensive **web-based inventory management system** designed to help businesses efficiently track products, manage categories and brands, monitor stock levels, and receive **real-time alerts** for low-stock items.
+StockUp is a comprehensive **web-based inventory management system** designed to help businesses efficiently track products, manage categories and brands, monitor stock levels, and receive **real-time alerts** for low-stock items.
 
 It features a **role-based access control system** to distinguish between Admin and Staff users with varying permissions.
 
