@@ -70,3 +70,14 @@ cd backend/
 
 # Install dependencies
 npm install
+
+#run the server
+npm run dev
+
+### 🧰 2.Frontend Setu
+
+# Install dependencies
+npm install
+
+#run the server
+npm start
